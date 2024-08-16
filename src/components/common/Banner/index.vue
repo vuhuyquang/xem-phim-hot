@@ -7,16 +7,16 @@
     </div>
 
     <!-- Lớp phủ gradient -->
-    <div class="absolute inset-0 px-24 flex flex-col justify-center lg:px-25 lg:w-2/3 to-transparent bg-gradient-to-r from-black shadow-gradient">
+    <div class="absolute inset-0 px-24 flex flex-col justify-center lg:px-25 lg:w-2/3 lg:bg-gradient-to-r shadow-gradient">
       <div class="text-white animate-slide-up">
-        <h1 class="text-4xl lg:text-5xl font-bold mt-2">Deadpool & Wolverine</h1>
+        <h1 class="text-4xl lg:text-5xl font-medium">Deadpool & Wolverine</h1>
         <div class="flex flex-row flex-wrap gap-2 items-center mt-4 text-sm">
-          <div class="flex items-center mb-1">
-            <StarOutlined class="text-custom-green" />
-            <StarOutlined class="text-custom-green" />
-            <StarOutlined class="text-custom-green" />
-            <StarOutlined class="text-custom-green" />
-            <StarOutlined class="text-custom-green" />
+          <div class="flex items-center">
+            <StarFilled class="text-[#40c1ad] text-[18px]" />
+            <StarFilled class="text-[#40c1ad] text-[18px]" />
+            <StarFilled class="text-[#40c1ad] text-[18px]" />
+            <StarFilled class="text-[#40c1ad] text-[18px]" />
+            <StarOutlined class="text-[#40c1ad] text-[18px]" />
           </div>
           <div class="opacity-50 hidden md:block">7.8</div>
           <span class="opacity-50 hidden md:block">·</span>
@@ -31,11 +31,11 @@
           Deadpool. Nhưng khi thế giới của anh đối mặt với một mối đe dọa nghiêm trọng, Wade buộc phải trở lại với bộ đồ
           chiến đấu, lần này cùng với Wolverine, người cũng không mấy vui vẻ.
         </p>
-        <div class="py-5 hidden lg:block">
+        <div class="py-2 hidden lg:block">
           <button type="button"
-            class="flex gap-2 items-center px-6 py-3 bg-transparent hover:bg-gray-300 hover:text-black transition"
+            class="flex gap-2 items-center px-6 py-2 bg-transparent hover:bg-gray-300 hover:text-black transition rounded"
             title="Xem Trailer">
-            <PlayCircleOutlined class="text-xl mb-1" /> Xem ngay
+            <PlayCircleOutlined class="text-xl mb-[6px]" /> Xem ngay
           </button>
         </div>
       </div>
@@ -50,16 +50,12 @@
   </div>
 </template>
 
+
 <script lang="ts" setup>
-import { StarOutlined, PlayCircleOutlined } from '@ant-design/icons-vue';
+import { StarOutlined, StarFilled , PlayCircleOutlined } from '@ant-design/icons-vue';
 </script>
 
 <style scoped>
-/* Định nghĩa màu xanh mint cho sao */
-.text-custom-green {
-  color: #40c1ad;
-}
-
 /* Hiệu ứng animation từ dưới lên */
 @keyframes slide-up {
   from {
@@ -80,5 +76,13 @@ import { StarOutlined, PlayCircleOutlined } from '@ant-design/icons-vue';
 
 .shadow-custom {
   box-shadow: 300px 0 100px 50px rgba(0, 0, 0, 0.8);
+}
+
+@media (min-width: 1024px) {
+  .lg\:bg-gradient-to-r {
+    --tw-gradient-from: rgba(0, 0, 0, 1);
+    --tw-gradient-stops: rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 50%, transparent 100%;
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  }
 }
 </style>
