@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "module": "ESNext",                // Sử dụng "ESNext" cho Node.js hiện đại
+    "moduleResolution": "bundler",     // Hoặc "nodenext"
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
@@ -7,13 +10,13 @@
       ]
     }
   },
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    },
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ]
+  // "files": [],
+  // "references": [
+  //   {
+  //     "path": "./tsconfig.app.json"
+  //   },
+  //   {
+  //     "path": "./tsconfig.node.json"
+  //   }
+  // ]
 }

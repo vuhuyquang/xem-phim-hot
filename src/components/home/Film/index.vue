@@ -1,7 +1,7 @@
 <template>
         <div class="p-10 flex flex-col gap-2">
       <h2 class="text-white text-2xl">Phim Phổ Biến</h2>
-      <div class="flex flex-row gap-3 cursor-pointer overflow-x-auto pb-12">
+      <div class="flex flex-row gap-3 cursor-pointer overflow-x-auto pb-6">
         <div>
           <img class="border-solid border-4 border-[#1F2021] min-w-[240px]" width="240" height="384"
             src="https://movies-proxy.vercel.app/ipx/f_webp&s_400x600/tmdb/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
