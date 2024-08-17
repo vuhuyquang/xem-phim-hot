@@ -24,7 +24,7 @@
           <span class="opacity-50">·</span>
           <div class="opacity-50">2024</div>
           <span class="opacity-50">·</span>
-          <div class="opacity-50">2h 8min</div>
+          <div class="opacity-50">128 phút</div>
         </div>
         <p class="mt-2 opacity-80 leading-relaxed line-clamp-3 md:line-clamp-5 text-xs md:text-base">
           Wade Wilson, một nhân vật mệt mỏi trong cuộc sống dân sự, đã bỏ lại những ngày tháng là tên lính đánh thuê
