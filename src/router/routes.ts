@@ -11,8 +11,8 @@ const routes: RouteRecordRaw[] = [
         component: () => import("@/pages/home/index.vue"),
       },
       {
-        path: "movie",
-        name: "Movie",
+        path: "movie/:slug",
+        name: "MovieDetail",
         component: () => import("@/pages/movie/index.vue"),
       },
       {
