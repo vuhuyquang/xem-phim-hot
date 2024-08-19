@@ -42,9 +42,9 @@ export const searchFilms = async (query: string, page: number = 1): Promise<Film
   }
 };
 
-export const getFilmDetails = async (filmId: number): Promise<Film> => {
+export const getFilmDetails = async (slug: string): Promise<any> => {
   try {
-    return await filmService.get(`/movie/${filmId}`);
+    return await filmService.get(`/phim/${slug}`);
   } catch (error) {
     console.error('Error fetching film details:', error);
     throw error;
