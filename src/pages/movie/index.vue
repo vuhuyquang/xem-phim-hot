@@ -31,6 +31,6 @@ async function getDetail(slug: string) {
 }
 
 onMounted(() => {
-  getDetail(slug);
+  getDetail(slug[0]);
 })
 </script>
