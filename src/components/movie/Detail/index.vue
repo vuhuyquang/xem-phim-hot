@@ -1,7 +1,8 @@
 <template>
-  <div class="flex flex-col h-screen">
+  <div class="flex flex-col">
+    <!-- Tab Navigation -->
     <div class="flex justify-center">
-      <ul class="flex space-x-8 cursor-pointer mt-8 mb-10 text-xl">
+      <ul class="flex space-x-4 md:space-x-8 cursor-pointer mt-4 md:mt-8 mb-4 md:mb-10 text-sm md:text-xl">
         <li
           :class="selectedTab === 'overview' ? 'text-white border-b-2 border-white pb-2 transition-transform transform duration-300 delay-[45ms]' : 'text-[#414141] pb-2 transition-transform transform duration-300 delay-[45ms]'"
           class="px-2 font-normal" @click="selectTab('overview')">
@@ -19,68 +20,75 @@
         </li>
       </ul>
     </div>
-    <div class="container mx-auto max-w-[1200px]">
-      <div class="flex flex-row w-full">
-        <div class="w-[28%] p-1 bg-[#1f2021]">
-          <img class="w-full h-[506px]"
-            src="https://movies-proxy.vercel.app/ipx/f_webp&s_400x600/tmdb/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
-            alt="Ảnh phim">
+
+    <!-- Content Section -->
+    <div class="container mx-auto max-w-[1200px] px-4 md:px-0 pb-10">
+      <div class="flex flex-col lg:flex-row w-full">
+        <!-- Image Section (Ẩn trên di động và tablet) -->
+        <div class="w-full lg:w-[28%] p-1 bg-[#1f2021] mb-6 lg:mb-0 h-auto lg:h-[506px]">
+          <img v-if="props.infoFilm?.movie?.thumb_url" class="hidden lg:block w-full object-cover h-full"
+            :src="props.infoFilm?.movie?.thumb_url" :alt="props.infoFilm?.movie?.name">
         </div>
-        <div class="w-[72%] p-12 text-white">
+
+        <!-- Text and Tables Section -->
+        <div class="w-full lg:w-[72%] p-4 lg:px-10 lg:py-8 text-white">
+          <!-- Story Section -->
           <div>
-            <h2 class="text-[30px] leading-9">Cốt truyện</h2>
-            <p class="opacity-80 leading-[1.65rem]">Một Wade Wilson vô hồn đang vật lộn với cuộc sống thường dân với
-              những ngày tháng của anh như một lính đánh thuê có đạo đức, Deadpool, đã qua. Nhưng khi quê hương của anh
-              phải đối mặt với một mối đe dọa hiện hữu, Wade phải miễn cưỡng mặc lại bộ đồ với một Wolverine còn miễn
-              cưỡng hơn.</p>
+            <h2 class="text-[20px] lg:text-[30px] leading-7 lg:leading-9">Cốt truyện</h2>
+            <i class="opacity-80 leading-[1.5rem] lg:leading-[1.65rem]">
+              {{ props.infoFilm?.movie?.content }}
+            </i>
           </div>
-          <div class="flex flex-row opacity-80 leading-[1.65rem] text-[14px]">
-            <div class="w-1/2">
+
+          <!-- Information Tables -->
+          <div
+            class="flex flex-col lg:flex-row opacity-80 leading-[1.5rem] lg:leading-[1.65rem] text-[12px] lg:text-[14px] mt-4 lg:mt-8">
+            <!-- Left Table -->
+            <div class="w-full lg:w-1/2 mb-4 lg:mb-0">
               <table class="w-full border-separate">
                 <tr>
                   <td class="whitespace-nowrap w-1/3">Phát hành</td>
-                  <td>24/7/2024</td>
+                  <td v-if="props.infoFilm?.movie?.showtimes === ''"><i>N/A</i></td>
+                  <td v-else>{{ props.infoFilm?.movie?.showtimes }}</td>
                 </tr>
                 <tr>
                   <td class="whitespace-nowrap">Đạo diễn</td>
-                  <td>Shawn Adam Levy</td>
-                </tr>
-                <tr>
-                  <td class="whitespace-nowrap">Đạo diễn</td>
-                  <td>Shawn Adam Levy</td>
+                  <td v-if="props.infoFilm?.movie?.director.length === 0"><i>N/A</i></td>
+                  <td v-else>{{ props.infoFilm?.movie?.director.join(', ') }}</td>
                 </tr>
                 <tr>
                   <td class="whitespace-nowrap">Doanh thu</td>
-                  <td>$1.222.765.573</td>
+                  <td><i>N/A</i></td>
                 </tr>
                 <tr>
                   <td class="whitespace-nowrap">Trạng thái</td>
-                  <td>Phát hành</td>
+                  <td>{{ props.infoFilm?.movie?.status }}</td>
                 </tr>
                 <tr>
                   <td class="whitespace-nowrap">Sản xuất</td>
-                  <td>Marvel Studios, Maximum Effort, 21 Laps Entertainment, 20th Century Studios, Kevin Feige
-                    Productions, TSG Entertainment</td>
+                  <td><i>N/A</i></td>
                 </tr>
               </table>
             </div>
-            <div class="w-1/2">
+
+            <!-- Right Table -->
+            <div class="w-full lg:w-1/2">
               <table class="w-full border-separate">
                 <tr>
                   <td class="whitespace-nowrap w-1/3">Thời gian</td>
-                  <td>2 giờ 8 phút</td>
+                  <td>{{ props.infoFilm?.movie?.time }}</td>
                 </tr>
                 <tr>
                   <td class="whitespace-nowrap">Ngân sách</td>
-                  <td>$200.000.000</td>
+                  <td><i>N/A</i></td>
                 </tr>
                 <tr>
                   <td class="whitespace-nowrap">Thể loại</td>
-                  <td>Hành động, Hài kịch</td>
+                  <td>{{ props.infoFilm?.movie?.country.map(c => c.name).join(', ') }}</td>
                 </tr>
                 <tr>
                   <td class="whitespace-nowrap">Ngôn ngữ</td>
-                  <td>Tiếng Anh</td>
+                  <td>{{ props.infoFilm?.movie?.lang }}</td>
                 </tr>
               </table>
             </div>
@@ -89,11 +97,18 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { Episodes, Movie } from '@/types/movie';
+import { ref, defineProps } from 'vue';
+
+const props = defineProps<{
+  infoFilm: {
+    episodes: Episodes;
+    movie: Movie;
+  };
+}>();
 
 const selectedTab = ref<string>('overview');
 

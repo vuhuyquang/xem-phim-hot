@@ -2,15 +2,15 @@
   <div class="relative aspect-[3/2] lg:aspect-[25/9] bg-black">
     <!-- Hình nền -->
     <div class="absolute inset-0 lg:left-1/3">
-      <img src="https://movies-proxy.vercel.app/ipx/f_webp&s_1220x659/tmdb/yDHYTfA3R0jFYba16jBB1ef8oIt.jpg"
-        alt="Hình nền" class="w-full h-full object-cover" />
+      <img :src="props.infoFilm?.movie?.poster_url" :alt="props.infoFilm?.movie?.name"
+        class="w-full h-full object-cover" />
     </div>
 
     <!-- Lớp phủ gradient -->
     <div
       class="absolute inset-0 px-24 flex flex-col justify-center lg:px-25 lg:w-2/3 lg:bg-gradient-to-r shadow-gradient">
       <div class="text-white animate-slide-up">
-        <h1 class="text-4xl lg:text-5xl font-medium">Deadpool & Wolverine</h1>
+        <h1 class="text-4xl lg:text-5xl font-medium">{{ props.infoFilm?.movie?.name }}</h1>
         <div class="flex flex-row flex-wrap gap-2 items-center mt-4 text-sm">
           <div class="flex items-center">
             <StarFilled class="text-[#40c1ad] text-[18px]" />
@@ -19,19 +19,16 @@
             <StarFilled class="text-[#40c1ad] text-[18px]" />
             <StarOutlined class="text-[#40c1ad] text-[18px]" />
           </div>
-          <div class="opacity-50 hidden md:block">7.8</div>
+          <div class="opacity-50 hidden md:block">{{ props.infoFilm?.movie?.tmdb?.vote_average }}</div>
           <span class="opacity-50 hidden md:block">·</span>
-          <div class="opacity-50 hidden md:block">1.9K Đánh giá</div>
+          <div class="opacity-50 hidden md:block">{{ props.infoFilm?.movie?.tmdb?.vote_count }} Đánh giá</div>
           <span class="opacity-50">·</span>
           <div class="opacity-50">2024</div>
           <span class="opacity-50">·</span>
-          <div class="opacity-50">128 phút</div>
+          <div class="opacity-50">{{ props.infoFilm?.movie?.time }}</div>
         </div>
-        <p class="mt-2 opacity-80 leading-relaxed line-clamp-3 md:line-clamp-5 text-xs md:text-base">
-          Wade Wilson, một nhân vật mệt mỏi trong cuộc sống dân sự, đã bỏ lại những ngày tháng là tên lính đánh thuê
-          Deadpool. Nhưng khi thế giới của anh đối mặt với một mối đe dọa nghiêm trọng, Wade buộc phải trở lại với bộ đồ
-          chiến đấu, lần này cùng với Wolverine, người cũng không mấy vui vẻ.
-        </p>
+        <p class="mt-2 opacity-80 leading-relaxed line-clamp-3 md:line-clamp-5 text-xs md:text-base">{{
+          props.infoFilm?.movie?.content }}</p>
       </div>
     </div>
 
@@ -46,7 +43,15 @@
 
 
 <script lang="ts" setup>
+import { Episodes, Movie } from '@/types/movie';
 import { StarOutlined, StarFilled, PlayCircleOutlined } from '@ant-design/icons-vue';
+
+const props = defineProps<{
+  infoFilm: {
+    episodes: Episodes;
+    movie: Movie;
+  };
+}>();
 </script>
 
 <style scoped>
