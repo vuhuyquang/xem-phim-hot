@@ -30,7 +30,8 @@
         <p class="mt-2 opacity-80 leading-relaxed line-clamp-3 md:line-clamp-5 text-xs md:text-base">{{
           props.infoFilm?.movie?.content }}</p>
         <div class="py-2 hidden lg:block">
-          <button type="button" @click="showModal = true"
+          <button type="button" 
+            @click="handleWatchDetail"
             class="flex gap-2 items-center px-6 py-2 bg-transparent hover:bg-gray-300 hover:text-black transition rounded"
             title="Xem Trailer">
             <PlayCircleOutlined class="text-xl mb-[6px]" /> Xem ngay
@@ -45,11 +46,6 @@
         <PlayCircleOutlined class="text-5xl" />
       </button>
     </div>
-
-    <a-modal v-model:visible="showModal" width="90%" :footer="null" centered>
-      <iframe :src="props.infoFilm?.episodes[0].server_data[0].link_embed" frameborder="0"
-        class="w-full h-[80vh]"></iframe>
-    </a-modal>
   </div>
 </template>
 
@@ -57,7 +53,7 @@
 <script lang="ts" setup>
 import { Episodes, Movie } from '@/types/movie';
 import { StarOutlined, StarFilled, PlayCircleOutlined } from '@ant-design/icons-vue';
-import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const props = defineProps<{
   infoFilm: {
@@ -65,8 +61,17 @@ const props = defineProps<{
     movie: Movie;
   };
 }>();
+const router = useRouter();
+const route = useRoute();
+const slug = route.params.slug;
 
-const showModal = ref<boolean>(false);
+function handleWatchDetail() {
+  router.push({
+    name: 'MovieWatch',
+    params: { slug: slug },
+    query: { ep: '1', server: '1' }
+  });
+}
 
 </script>
 

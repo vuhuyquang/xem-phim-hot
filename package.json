@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
+    "@types/video.js": "^7.3.58",
     "ant-design-vue": "^4.2.3",
     "axios": "^1.7.4",
     "sass": "^1.77.8",
+    "video.js": "^8.17.4",
     "vue": "^3.4.35",
     "vue-router": "^4.4.3"
   },

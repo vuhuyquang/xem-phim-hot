@@ -16,12 +16,6 @@ const routes: RouteRecordRaw[] = [
         component: () => import("@/pages/movie/index.vue"),
       },
       {
-        path: "movie/:slug/watch",
-        name: "MovieWatch",
-        component: () => import("@/pages/movie/watch.vue"),
-        props: true,
-      },
-      {
         path: "tv",
         name: "TV",
         component: () => import("@/pages/tv/index.vue"),
@@ -32,6 +26,12 @@ const routes: RouteRecordRaw[] = [
         component: () => import("@/pages/search/index.vue"),
       },
     ],
+  },
+  {
+    path: "/movie/:slug/watch",
+    name: "MovieWatch",
+    component: () => import("@/pages/movie/watch.vue"),
+    props: (route) => ({ slug: route.params.slug, ep: route.query.ep, server: route.query.server }),
   },
 ];
 
