@@ -6,7 +6,7 @@
         <router-link :to="{ name: 'MovieDetail', params: { slug: item.slug } }">
           <img class="border-solid border-4 border-[#1F2021] min-w-[240px] min-h-[384px] max-w-[240px] max-h-[384px]"
             width="240" height="384" :src="`https://img.ophim.live/uploads/movies/${item.thumb_url}`"
-            :alt="`${item.slug}`" loading="lazy">
+            :alt="`${item.slug}`">
           <div class="flex flex-col gap-1 mt-4">
             <h4 class="text-white">{{ item.name }}</h4>
             <div class="flex items-center text-sm text-[#40c1ad]">

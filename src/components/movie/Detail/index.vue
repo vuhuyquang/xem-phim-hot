@@ -95,6 +95,18 @@
           </div>
         </div>
       </div>
+
+      <!-- Danh sách tập phim -->
+      <div v-if="selectedTab === 'overview'" class="mt-8 text-white">
+        <h2 class="text-[20px] lg:text-[30px] leading-7 lg:leading-9">Danh sách tập phim</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 mt-4">
+          <div v-for="(episode, index) in props.infoFilm?.episodes[0]?.server_data" :key="index"
+            class="border border-gray-600 bg-gray-800 p-2 rounded-lg cursor-pointer hover:bg-gray-700 transition duration-300 text-xs lg:text-sm flex items-center justify-center">
+            <span class="font-medium">Tập {{ episode.name }}</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
