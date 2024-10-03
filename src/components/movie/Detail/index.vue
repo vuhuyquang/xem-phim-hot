@@ -101,7 +101,8 @@
         <h2 class="text-[20px] lg:text-[30px] leading-7 lg:leading-9">Danh sách tập phim</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 mt-4">
           <div v-for="(episode, index) in props.infoFilm?.episodes[0]?.server_data" :key="index"
-            class="border border-gray-600 bg-gray-800 p-2 rounded-lg cursor-pointer hover:bg-gray-700 transition duration-300 text-xs lg:text-sm flex items-center justify-center">
+            @click="watchMovie(index)"
+            class="hover:scale-105 border border-gray-600 bg-gray-800 p-2 rounded-lg cursor-pointer hover:bg-gray-700 transition duration-300 text-xs lg:text-sm flex items-center justify-center">
             <span class="font-medium">Tập {{ episode.name }}</span>
           </div>
         </div>
@@ -114,6 +115,7 @@
 <script lang="ts" setup>
 import { Episodes, Movie } from '@/types/movie';
 import { ref, defineProps } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
 const props = defineProps<{
   infoFilm: {
@@ -121,10 +123,21 @@ const props = defineProps<{
     movie: Movie;
   };
 }>();
+const router = useRouter();
+const route = useRoute();
+const slug = route.params.slug;
 
 const selectedTab = ref<string>('overview');
 
 function selectTab(tab: string) {
   selectedTab.value = tab;
+}
+
+function watchMovie(index: number) {
+  router.push({
+    name: 'MovieWatch',
+    params: { slug: slug },
+    query: { ep: index + 1, server: '1' }
+  });
 }
 </script>
