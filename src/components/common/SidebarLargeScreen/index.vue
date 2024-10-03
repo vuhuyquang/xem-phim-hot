@@ -9,7 +9,7 @@
             :class="['text-2xl', selectPage === 'home' ? 'text-[#40c1ad]' : 'text-white', 'hover:text-[#40c1ad]', 'transition', 'delay-[45ms]']" />
         </a-tooltip>
       </router-link>
-      <router-link @click.native="setSelectPage('movie')" to="/search" class="block text-center">
+      <router-link @click.native="setSelectPage('movie')" to="/movie" class="block text-center">
         <a-tooltip title="Phim">
           <VideoCameraOutlined
             :class="['text-2xl', selectPage === 'movie' ? 'text-[#40c1ad]' : 'text-white', 'hover:text-[#40c1ad]', 'transition', 'delay-[45ms]']" />
